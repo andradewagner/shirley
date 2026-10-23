@@ -1,16 +1,13 @@
-/*
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
 #pragma once
 #include <stdint.h>
 #include <stdbool.h>
 
-#define DEFAULT_POWER  true
-extern esp_rmaker_device_t *switch_device;
+#define NUM_RELAYS 4
+#define DEFAULT_POWER false
+
+// Array para armazenar os handles dos dispositivos no RainMaker
+extern esp_rmaker_device_t *relay_devices[NUM_RELAYS];
+
 void app_driver_init(void);
-int app_driver_set_state(bool state);
-bool app_driver_get_state(void);
+int app_driver_set_state(int relay_index, bool state);
+bool app_driver_get_state(int relay_index);
